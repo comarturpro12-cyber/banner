@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MAX Readability Banner (Fixed)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: #050505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        .levitate-wrapper {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- БАННЕР --- */
+        .banner {
+            position: relative;
+            width: 800px;
+            height: 280px;
+            background: #ffffff;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            box-shadow: 
+                0 0 0 4px rgba(255, 255, 255, 0.1),
+                0 20px 60px rgba(0,0,0,0.7),
+                0 0 80px rgba(0, 210, 255, 0.2); 
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                120deg, 
+                transparent 30%, 
+                rgba(0, 255, 255, 0.2) 45%, 
+                rgba(255, 0, 255, 0.2) 50%, 
+                rgba(255, 255, 0, 0.2) 55%, 
+                transparent 70%
+            );
+            animation: shine 4s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-20%, -20%); }
+            100% { transform: translate(10%, 10%); }
+        }
+
+        /* --- ЛЕВАЯ ЧАСТЬ --- */
+        .text-side {
+            flex: 1;
+            z-index: 2;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #111;
+            font-size: 38px;
+            line-height: 0.95;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .highlight {
+            font-size: 58px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #0072ff, #00c6ff, #ff00cc, #0072ff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            animation: gradientFlow 3s linear infinite;
+            filter: drop-shadow(0 4px 0px rgba(0,0,0,0.1));
+        }
+
+        @keyframes gradientFlow {
+            to { background-position: 300% center; }
+        }
+
+        .badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .badge {
+            background: #111;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 8px 16px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .badge-accent {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+        }
+
+        /* --- ПРАВАЯ ЧАСТЬ (QR) --- */
+        .qr-side {
+            position: relative;
+            z-index: 2;
+            width: 220px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Подложка для пульсации */
+        .qr-pulse-bg {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 28px;
+            background: linear-gradient(45deg, #00c6ff, #ff00cc);
+            filter: blur(20px);
+            opacity: 0.5;
+            animation: qrPulse 2s infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes qrPulse {
+            from { transform: scale(0.95); opacity: 0.4; }
+            to { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .qr-card {
+            width: 180px;
+            height: 180px;
+            background: #fff;
+            padding: 12px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: perspective(600px) rotateY(-8deg);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            /* Градиентная рамка */
+            border: 3px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(45deg, #00c6ff, #ff00cc);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        
+        .banner:hover .qr-card {
+            transform: perspective(600px) rotateY(0deg) scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .qr-card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        /* Убрали scanner-beam */
+
+        .click-hint {
+            margin-top: 20px;
+            font-size: 15px;
+            font-weight: 900;
+            color: #0072ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 1s infinite alternate;
+            text-shadow: 0 2px 10px rgba(0, 114, 255, 0.3);
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 0.8; }
+            to { transform: scale(1.1); opacity: 1; }
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(70px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+        .blob-1 { top: -50px; left: -50px; width: 300px; height: 300px; background: #a8ff78; }
+        .blob-2 { bottom: -50px; right: 100px; width: 400px; height: 400px; background: #78ffd6; }
+
+    </style>
+</head>
+<body>
+
+    <div class="levitate-wrapper">
+        <div class="banner">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+
+            <div class="text-side">
+                <h1>СКАЧАТЬ СОФТ В ТГ:</h1>
+                <span class="highlight">@NGFSOFT</span>
+                <div class="badges">
+                    <div class="badge">На iPHONE и Android</div>
+                    <div class="badge badge-accent">БЕЗ Root</div>
+                </div>
+            </div>
+
+            <div class="qr-side">
+                <div class="qr-pulse-bg"></div>
+                <div class="qr-card">
+                    <img src="qr.png" alt="QR Code">
+                </div>
+                <div class="click-hint">ИЛИ СКАНИРУЙ QR</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
