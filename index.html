@@ -2,13 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>LUNASOFT WHITE PURPLE SHEEN</title>
+    <title>LUNASOFT SOLID BANNER</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8a2be2;
             --accent: #d400ff;
-            --glass: rgba(15, 15, 20, 0.92);
+            /* ТЕПЕРЬ СПЛОШНОЙ ТЕМНЫЙ ЦВЕТ (НЕ ПРОЗРАЧНЫЙ) */
+            --glass: #0f0f14; 
             --text: #ffffff;
         }
 
@@ -41,8 +42,7 @@
             width: 700px;
             height: 350px;
             background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            /* Убрал блюр, так как фон теперь сплошной */
             border: 2px solid rgba(212, 0, 255, 0.3);
             border-radius: 45px;
             display: flex;
@@ -127,7 +127,6 @@
         .highlight {
             font-size: 85px;
             font-weight: 900;
-            /* Градиент: Чистый Белый <-> Светло-фиолетовый (Лаванда) */
             background: linear-gradient(90deg, #ffffff, #d4aaff, #ffffff, #d4aaff, #ffffff);
             background-size: 300% auto;
             -webkit-background-clip: text;
@@ -135,7 +134,6 @@
             display: inline-block;
             margin: -5px 0 15px 0;
             animation: gradientFlow 3s linear infinite;
-            /* Тень тоже светло-фиолетовая */
             filter: drop-shadow(0 0 25px rgba(212, 170, 255, 0.6));
         }
 
@@ -202,7 +200,7 @@
                     <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <div class="logo-text">ЛУНА СОФТ</div>
+                    <div class="logo-text">LNCSOFT</div>
                 </div>
 
                 <h1>СКАЧАТЬ СОФТ В ТГ:</h1>
