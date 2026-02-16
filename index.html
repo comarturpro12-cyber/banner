@@ -2,25 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>LUNASOFT BANNER</title>
+    <title>LUNASOFT WHITE PURPLE SHEEN</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --primary: #8a2be2; /* Blue Violet */
-            --accent: #d400ff; /* Neon Magenta */
-            --glass: rgba(20, 20, 25, 0.7);
-            --border: rgba(138, 43, 226, 0.3);
+            --primary: #8a2be2;
+            --accent: #d400ff;
+            --glass: rgba(15, 15, 20, 0.92);
             --text: #ffffff;
         }
 
+        html { background: transparent; }
+
         body {
             margin: 0;
-            background-color: var(--bg);
-            /* Фон: темный космос с фиолетовым свечением */
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15), transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(212, 0, 255, 0.1), transparent 40%);
+            background-color: transparent; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,6 +27,7 @@
 
         .levitate-wrapper {
             animation: float 6s ease-in-out infinite;
+            padding: 30px;
         }
 
         @keyframes float {
@@ -41,21 +38,22 @@
         /* --- БАННЕР --- */
         .banner {
             position: relative;
-            width: 850px;
-            height: 300px;
+            width: 700px;
+            height: 350px;
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 40px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid rgba(212, 0, 255, 0.3);
+            border-radius: 45px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 50px;
+            justify-content: center; 
+            padding: 0 30px;
             box-sizing: border-box;
             box-shadow: 
                 0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-                0 30px 80px rgba(0,0,0,0.8),
-                0 0 100px rgba(138, 43, 226, 0.15); 
+                0 30px 80px rgba(0,0,0,0.9),
+                0 0 90px rgba(138, 43, 226, 0.25); 
             overflow: hidden;
         }
 
@@ -63,10 +61,11 @@
             content: '';
             position: absolute;
             top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
             transform: skewX(-25deg);
-            animation: shine 5s infinite;
+            animation: shine 6s infinite;
             pointer-events: none;
+            z-index: 10;
         }
 
         @keyframes shine {
@@ -75,178 +74,119 @@
             100% { left: 200%; }
         }
 
-        /* --- ТЕКСТ --- */
         .text-side {
-            flex: 1;
             z-index: 2;
-            padding-right: 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center; 
+            text-align: center;
         }
 
-        /* --- ЛОГО (ЛУНА + ТЕКСТ) --- */
+        /* --- ЛОГО --- */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            filter: drop-shadow(0 0 8px var(--primary));
+            width: 28px; height: 28px;
+            filter: drop-shadow(0 0 8px var(--accent));
         }
 
         .logo-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, #fff, #d400ff);
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, #e0aaff, #fff);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            animation: gradientFlow 5s linear infinite;
         }
 
         h1 {
             color: #fff;
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 38px;
+            font-weight: 900;
             line-height: 1;
             text-transform: uppercase;
-            margin: 0;
+            margin: 5px 0 0 0;
             letter-spacing: -0.5px;
-            opacity: 0.9;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
         }
 
+        /* --- НИКНЕЙМ (БЕЛЫЕ БЛИКИ + СВЕТЛО-ФИОЛЕТОВЫЙ) --- */
         .highlight {
-            font-size: 54px;
+            font-size: 85px;
             font-weight: 900;
-            background: linear-gradient(90deg, #fff, #d400ff, #8a2be2, #fff);
+            /* Градиент: Чистый Белый <-> Светло-фиолетовый (Лаванда) */
+            background: linear-gradient(90deg, #ffffff, #d4aaff, #ffffff, #d4aaff, #ffffff);
             background-size: 300% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            margin: 2px 0 12px 0;
-            animation: gradientFlow 4s linear infinite;
-            filter: drop-shadow(0 0 15px rgba(212, 0, 255, 0.4));
+            margin: -5px 0 15px 0;
+            animation: gradientFlow 3s linear infinite;
+            /* Тень тоже светло-фиолетовая */
+            filter: drop-shadow(0 0 25px rgba(212, 170, 255, 0.6));
         }
 
         @keyframes gradientFlow {
             to { background-position: 300% center; }
         }
 
+        /* --- БЕЙДЖИ --- */
         .badges {
             display: flex;
-            gap: 12px;
+            gap: 15px;
+            justify-content: center;
         }
 
         .badge {
-            background: rgba(20, 20, 20, 0.8);
-            color: #ccc;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 8px 18px;
-            border-radius: 14px;
-            text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex; align-items: center; gap: 6px;
-        }
-
-        .badge-accent {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, #bd00ff, #7a00cc);
             color: #fff;
-            border: none;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
-        }
-
-        /* --- QR SIDE --- */
-        .qr-side {
-            position: relative;
-            z-index: 2;
-            width: 220px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .qr-pulse-bg {
-            position: absolute;
-            width: 190px;
-            height: 190px;
-            border-radius: 30px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            filter: blur(25px);
-            opacity: 0.6;
-            animation: qrPulse 2s infinite alternate;
-            z-index: -1;
-            top: -5px;
-        }
-        
-        @keyframes qrPulse {
-            from { transform: scale(0.95); opacity: 0.5; }
-            to { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        .qr-card {
-            width: 180px;
-            height: 180px;
-            background: #111;
-            padding: 10px;
-            border-radius: 26px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            transform: perspective(800px) rotateY(-10deg) rotateX(5deg);
-            transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            border: 2px solid transparent;
-            background-image: linear-gradient(#151515, #151515), linear-gradient(135deg, #fff, #d400ff);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
-        
-        .banner:hover .qr-card {
-            transform: perspective(800px) rotateY(0deg) scale(1.05);
-            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.3);
-        }
-
-        .qr-card img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            border-radius: 18px;
-            image-rendering: pixelated;
-        }
-
-        .click-hint {
-            margin-top: 25px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 800;
-            color: #fff;
+            padding: 12px 28px;
+            border-radius: 18px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: textGlow 2s infinite alternate;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
         }
 
-        @keyframes textGlow {
-            from { text-shadow: 0 0 5px var(--primary); opacity: 0.8; }
-            to { text-shadow: 0 0 15px var(--accent); opacity: 1; }
+        .badge-icon {
+            width: 20px; height: 20px;
+            fill: #fff;
+            display: block;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
         }
 
-        /* --- BLOB BG --- */
+        .sep { opacity: 0.4; margin: 0 5px; font-weight: 300; }
+
+        /* --- ЖИВЫЕ ПЯТНА --- */
         .blob {
             position: absolute;
             filter: blur(80px);
             z-index: 0;
-            opacity: 0.3;
+            opacity: 0.45;
+            animation: pulseBlob 8s ease-in-out infinite alternate;
         }
-        .blob-1 { top: -50px; left: -50px; width: 400px; height: 400px; background: var(--primary); }
-        .blob-2 { bottom: -50px; right: 50px; width: 300px; height: 300px; background: var(--accent); }
+        .blob-1 { top: -80px; left: -20px; width: 450px; height: 450px; background: var(--primary); }
+        .blob-2 { bottom: -80px; right: -20px; width: 450px; height: 450px; background: var(--accent); animation-delay: -4s; }
+
+        @keyframes pulseBlob {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.1); opacity: 0.55; }
+        }
 
     </style>
 </head>
@@ -259,33 +199,35 @@
 
             <div class="text-side">
                 <div class="logo-container">
-                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <defs>
-                            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#fff" />
-                                <stop offset="100%" style="stop-color:#d400ff" />
-                            </linearGradient>
-                        </defs>
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <div class="logo-text">LNCSOFT</div>
+                    <div class="logo-text">ЛУНА СОФТ</div>
                 </div>
 
                 <h1>СКАЧАТЬ СОФТ В ТГ:</h1>
                 <span class="highlight">@LNCSOFT</span>
                 
                 <div class="badges">
-                    <div class="badge">🍏 iOS / 🤖 Android</div>
-                    <div class="badge badge-accent">🔥 БЕЗ ROOT</div>
-                </div>
-            </div>
+                    <div class="badge">
+                        <svg class="badge-icon" viewBox="0 0 384 512">
+                            <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z"/>
+                        </svg>
+                        iOS 
+                        <span class="sep">/</span>
+                        <svg class="badge-icon" viewBox="0 0 576 512">
+                            <path d="M420.55,301.93a24,24,0,1,1,24-24,24,24,0,0,1-24,24m-165.1,0a24,24,0,1,1,24-24,24,24,0,0,1-24,24m119.55-121.36a302.05,302.05,0,0,0-23.45-11.49l15.58-35.79a9.6,9.6,0,0,0-17.65-7.68l-15.93,36.6a287.9,287.9,0,0,0-91.1,0l-15.93-36.6a9.6,9.6,0,1,0-17.65,7.68l15.58,35.79a302.05,302.05,0,0,0-23.45,11.49A157.65,157.65,0,0,0,148,290.85V404.1a32.25,32.25,0,0,0,32.17,32.17h215.66A32.25,32.25,0,0,0,428,404.1V290.85a157.65,157.65,0,0,0-52.9-110.28"/>
+                        </svg>
+                        Android
+                    </div>
 
-            <div class="qr-side">
-                <div class="qr-pulse-bg"></div>
-                <div class="qr-card">
-                    <img src="qr.png" alt="QR Code">
+                    <div class="badge">
+                        <svg class="badge-icon" viewBox="0 0 512 512">
+                            <path d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.3 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zm-47.2 114.2l-184 184c-6.2 6.2-16.4 6.2-22.6 0l-104-104c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0l92.7 92.7 172.7-172.7c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
+                        </svg>
+                        БЕЗ ROOT
+                    </div>
                 </div>
-                <div class="click-hint">СКАНИРУЙ QR</div>
             </div>
         </div>
     </div>
