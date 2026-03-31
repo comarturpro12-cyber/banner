@@ -2,14 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>LUNASOFT SOLID BANNER</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <title>ONYXHACK BANNER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8a2be2;
-            --accent: #d400ff;
-            /* ТЕПЕРЬ СПЛОШНОЙ ТЕМНЫЙ ЦВЕТ (НЕ ПРОЗРАЧНЫЙ) */
-            --glass: #0f0f14; 
+            --primary: #7c3aed;
+            --accent: #a78bfa;
+            --bg: #0a0812;
             --text: #ffffff;
         }
 
@@ -17,12 +16,12 @@
 
         body {
             margin: 0;
-            background-color: transparent; 
+            background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             overflow: hidden;
         }
 
@@ -36,160 +35,151 @@
             50% { transform: translateY(-12px); }
         }
 
-        /* --- БАННЕР --- */
         .banner {
             position: relative;
             width: 700px;
-            height: 350px;
-            background: var(--glass);
-            /* Убрал блюр, так как фон теперь сплошной */
-            border: 2px solid rgba(212, 0, 255, 0.3);
-            border-radius: 45px;
+            height: 340px;
+            background: #0d0b18;
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            border-radius: 32px;
             display: flex;
             align-items: center;
-            justify-content: center; 
-            padding: 0 30px;
+            justify-content: center;
+            padding: 0 40px;
             box-sizing: border-box;
-            box-shadow: 
-                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+            box-shadow:
+                0 0 0 1px rgba(167, 139, 250, 0.05) inset,
                 0 30px 80px rgba(0,0,0,0.9),
-                0 0 90px rgba(138, 43, 226, 0.25); 
+                0 0 80px rgba(124, 58, 237, 0.2);
             overflow: hidden;
         }
 
+        /* shimmer */
         .banner::before {
             content: '';
             position: absolute;
             top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
             transform: skewX(-25deg);
             animation: shine 6s infinite;
             pointer-events: none;
             z-index: 10;
         }
-
         @keyframes shine {
             0%, 40% { left: -100%; }
             50% { left: 200%; }
             100% { left: 200%; }
         }
 
+        /* blobs */
+        .blob {
+            position: absolute;
+            filter: blur(90px);
+            z-index: 0;
+            opacity: 0.35;
+            animation: pulseBlob 8s ease-in-out infinite alternate;
+        }
+        .blob-1 { top: -100px; left: -60px; width: 420px; height: 420px; background: #5b21b6; }
+        .blob-2 { bottom: -100px; right: -60px; width: 420px; height: 420px; background: #7c3aed; animation-delay: -4s; }
+        @keyframes pulseBlob {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.45; }
+        }
+
         .text-side {
             z-index: 2;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center; 
+            align-items: center;
             text-align: center;
+            width: 100%;
         }
 
-        /* --- ЛОГО --- */
+        /* logo pill */
         .logo-container {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.15);
+            gap: 8px;
+            margin-bottom: 12px;
+            padding: 6px 18px;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(124, 58, 237, 0.35);
             border-radius: 50px;
         }
-
-        .logo-icon {
-            width: 28px; height: 28px;
-            filter: drop-shadow(0 0 8px var(--accent));
+        .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #a78bfa;
+            box-shadow: 0 0 8px rgba(167,139,250,0.8);
+            animation: dotPulse 2s ease-in-out infinite;
         }
-
+        @keyframes dotPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
         .logo-text {
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #fff, #e0aaff, #fff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #a78bfa;
             text-transform: uppercase;
-            animation: gradientFlow 5s linear infinite;
         }
 
         h1 {
-            color: #fff;
-            font-size: 38px;
-            font-weight: 900;
-            line-height: 1;
+            color: rgba(255,255,255,0.55);
+            font-size: 16px;
+            font-weight: 700;
             text-transform: uppercase;
-            margin: 5px 0 0 0;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+            letter-spacing: 4px;
+            margin: 0 0 4px 0;
         }
 
-        /* --- НИКНЕЙМ (БЕЛЫЕ БЛИКИ + СВЕТЛО-ФИОЛЕТОВЫЙ) --- */
+        /* main domain text — smaller so it fits */
         .highlight {
-            font-size: 85px;
+            font-size: 58px;
             font-weight: 900;
-            background: linear-gradient(90deg, #ffffff, #d4aaff, #ffffff, #d4aaff, #ffffff);
+            background: linear-gradient(90deg, #ffffff, #c4b5fd, #ffffff, #c4b5fd, #ffffff);
             background-size: 300% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            margin: -5px 0 15px 0;
+            margin: 0 0 18px 0;
+            letter-spacing: -1px;
             animation: gradientFlow 3s linear infinite;
-            filter: drop-shadow(0 0 25px rgba(212, 170, 255, 0.6));
+            filter: drop-shadow(0 0 20px rgba(167,139,250,0.5));
         }
-
         @keyframes gradientFlow {
             to { background-position: 300% center; }
         }
 
-        /* --- БЕЙДЖИ --- */
+        /* badges */
         .badges {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
         }
-
         .badge {
-            background: linear-gradient(135deg, #bd00ff, #7a00cc);
-            color: #fff;
-            font-size: 16px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.45);
+            color: #ede9ff;
+            font-size: 13px;
             font-weight: 800;
-            padding: 12px 28px;
-            border-radius: 18px;
+            padding: 10px 22px;
+            border-radius: 12px;
             text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex; align-items: center; gap: 8px;
-            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+            letter-spacing: 1px;
+            display: flex; align-items: center; gap: 7px;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
         }
-
         .badge-icon {
-            width: 20px; height: 20px;
-            fill: #fff;
+            width: 16px; height: 16px;
+            fill: #a78bfa;
             display: block;
-            filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
         }
-
-        .sep { opacity: 0.4; margin: 0 5px; font-weight: 300; }
-
-        /* --- ЖИВЫЕ ПЯТНА --- */
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: 0;
-            opacity: 0.45;
-            animation: pulseBlob 8s ease-in-out infinite alternate;
-        }
-        .blob-1 { top: -80px; left: -20px; width: 450px; height: 450px; background: var(--primary); }
-        .blob-2 { bottom: -80px; right: -20px; width: 450px; height: 450px; background: var(--accent); animation-delay: -4s; }
-
-        @keyframes pulseBlob {
-            0% { transform: scale(1); opacity: 0.4; }
-            100% { transform: scale(1.1); opacity: 0.55; }
-        }
-
+        .sep { opacity: 0.3; margin: 0 4px; font-weight: 300; }
     </style>
 </head>
 <body>
-
     <div class="levitate-wrapper">
         <div class="banner">
             <div class="blob blob-1"></div>
@@ -197,39 +187,34 @@
 
             <div class="text-side">
                 <div class="logo-container">
-                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <div class="logo-text">ONYX HACK</div>
+                    <div class="dot"></div>
+                    <div class="logo-text">OnyxHack</div>
                 </div>
 
-                <h1>САЙТ СОФТА:</h1>
+                <h1>Сайт софта</h1>
                 <span class="highlight">ONYXHACK.ORG</span>
-                
+
                 <div class="badges">
                     <div class="badge">
                         <svg class="badge-icon" viewBox="0 0 384 512">
                             <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z"/>
                         </svg>
-                        iOS 
+                        iOS
                         <span class="sep">/</span>
                         <svg class="badge-icon" viewBox="0 0 576 512">
                             <path d="M420.55,301.93a24,24,0,1,1,24-24,24,24,0,0,1-24,24m-165.1,0a24,24,0,1,1,24-24,24,24,0,0,1-24,24m119.55-121.36a302.05,302.05,0,0,0-23.45-11.49l15.58-35.79a9.6,9.6,0,0,0-17.65-7.68l-15.93,36.6a287.9,287.9,0,0,0-91.1,0l-15.93-36.6a9.6,9.6,0,1,0-17.65,7.68l15.58,35.79a302.05,302.05,0,0,0-23.45,11.49A157.65,157.65,0,0,0,148,290.85V404.1a32.25,32.25,0,0,0,32.17,32.17h215.66A32.25,32.25,0,0,0,428,404.1V290.85a157.65,157.65,0,0,0-52.9-110.28"/>
                         </svg>
                         Android
                     </div>
-
                     <div class="badge">
                         <svg class="badge-icon" viewBox="0 0 512 512">
                             <path d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.3 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zm-47.2 114.2l-184 184c-6.2 6.2-16.4 6.2-22.6 0l-104-104c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0l92.7 92.7 172.7-172.7c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
                         </svg>
-                        БЕЗ ROOT
+                        Без ROOT
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>
-
